@@ -1,6 +1,6 @@
 'use client'
 import { useEffect, useRef, useState } from 'react'
-import { Github, ExternalLink, Star, Brain, BarChart2, Eye, MessageSquare, Database } from 'lucide-react'
+import { Github, ExternalLink, Star, Brain, BarChart2, Eye, MessageSquare, Database, type LucideIcon } from 'lucide-react'
 import { supabase, type Project } from '@/lib/supabase'
 
 // Projets de démonstration si Supabase est vide
@@ -63,7 +63,7 @@ const DEMO_PROJECTS: Project[] = [
   },
 ]
 
-const CATEGORY_ICONS: Record<string, React.FC<{ size?: number; className?: string }>> = {
+const CATEGORY_ICONS: Record<string, LucideIcon> = {
   'machine-learning': Brain,
   'deep-learning': Brain,
   'nlp': MessageSquare,
