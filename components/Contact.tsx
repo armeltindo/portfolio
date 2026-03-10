@@ -1,7 +1,7 @@
 'use client'
 import { useEffect, useRef, useState } from 'react'
 import { Send, CheckCircle, AlertCircle, Mail, MapPin, Linkedin } from 'lucide-react'
-import { supabase } from '@/lib/supabase'
+import { getSupabase } from '@/lib/supabase'
 
 export default function Contact() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -25,7 +25,10 @@ export default function Contact() {
     setErrorMsg('')
 
     try {
-      const { error } = await supabase
+      const client = getSupabase()
+      if (!client) throw new Error('Service de messagerie non configuré.')
+
+      const { error } = await client
         .from('contact_messages')
         .insert([{ name: form.name, email: form.email, message: form.message }])
 

@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { Github, ExternalLink, Star, Brain, BarChart2, Eye, MessageSquare, Database } from 'lucide-react'
 import type { ComponentType } from 'react'
-import { supabase, type Project } from '@/lib/supabase'
+import { supabase, getSupabase, type Project } from '@/lib/supabase'
 
 // Projets de démonstration si Supabase est vide
 const DEMO_PROJECTS: Project[] = [
@@ -91,7 +91,10 @@ export default function Projects() {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const { data, error } = await supabase
+        const client = getSupabase()
+        if (!client) { setLoading(false); return }
+
+        const { data, error } = await client
           .from('projects')
           .select('*')
           .order('featured', { ascending: false })
@@ -101,7 +104,7 @@ export default function Projects() {
           setProjects(data)
         }
       } catch {
-        // Supabase non configuré → garder les démos
+        // Garder les démos
       } finally {
         setLoading(false)
       }
