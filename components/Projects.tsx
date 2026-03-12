@@ -129,20 +129,32 @@ export default function Projects() {
   }, [])
 
   useEffect(() => {
+    if (loading) return
     const observer = new IntersectionObserver(
       (entries) => entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add('visible') }),
       { threshold: 0.05 }
     )
-    sectionRef.current?.querySelectorAll('.reveal').forEach((el) => observer.observe(el))
-    return () => observer.disconnect()
-  }, [projects])
+    // Small delay so DOM is fully painted before observing
+    const t = setTimeout(() => {
+      sectionRef.current?.querySelectorAll('.reveal').forEach((el) => observer.observe(el))
+    }, 50)
+    return () => { clearTimeout(t); observer.disconnect() }
+  }, [loading, projects])
 
   const categories = ['all', ...Array.from(new Set(projects.map((p) => p.category)))]
   const filtered = filter === 'all' ? projects : projects.filter((p) => p.category === filter)
   const featured = filtered.filter((p) => p.featured)
   const rest = filtered.filter((p) => !p.featured)
 
-  if (loading) return null
+  if (loading) {
+    return (
+      <section id="projects" className="py-24 lg:py-32 px-4 sm:px-6 lg:px-8 bg-dark-surface">
+        <div className="max-w-7xl mx-auto flex justify-center items-center h-48">
+          <div className="w-8 h-8 border-2 border-primary/30 border-t-primary rounded-full animate-spin" />
+        </div>
+      </section>
+    )
+  }
 
   return (
     <section id="projects" ref={sectionRef} className="py-24 lg:py-32 px-4 sm:px-6 lg:px-8 bg-dark-surface relative overflow-hidden">
