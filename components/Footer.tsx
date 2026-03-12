@@ -1,4 +1,5 @@
 import { Github, Linkedin, Mail, Heart } from 'lucide-react'
+import Image from 'next/image'
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
@@ -11,8 +12,8 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2.5 mb-3">
-              <div className="w-9 h-9 rounded-xl bg-gradient-primary flex items-center justify-center">
-                <span className="font-display font-bold text-white text-sm">AT</span>
+              <div className="w-9 h-9 rounded-xl overflow-hidden ring-2 ring-primary/40">
+                <Image src="/profile.jpg" alt="TINDO Armel" width={36} height={36} className="w-full h-full object-cover object-top" />
               </div>
               <span className="font-display font-bold text-text-primary text-lg">
                 Tindo Armel<span className="text-primary-light">.</span>

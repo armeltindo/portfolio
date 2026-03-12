@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { Menu, X, Download } from 'lucide-react'
+import Image from 'next/image'
 
 const navLinks = [
   { label: 'Accueil', href: '#hero' },
@@ -35,8 +36,8 @@ export default function Navbar() {
 
           {/* Logo */}
           <a href="#hero" className="flex items-center gap-2.5 group">
-            <div className="w-9 h-9 rounded-xl bg-gradient-primary flex items-center justify-center shadow-primary-sm group-hover:scale-105 transition-transform duration-200">
-              <span className="font-display font-bold text-white text-sm tracking-tight">AT</span>
+            <div className="w-9 h-9 rounded-xl overflow-hidden shadow-primary-sm group-hover:scale-105 transition-transform duration-200 ring-2 ring-primary/40">
+              <Image src="/profile.jpg" alt="TINDO Armel" width={36} height={36} className="w-full h-full object-cover object-top" />
             </div>
             <span className="font-display font-bold text-text-primary text-base hidden sm:block">
               Armel<span className="text-primary-light">.</span>
