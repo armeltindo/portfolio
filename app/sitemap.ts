@@ -1,6 +1,6 @@
 import { MetadataRoute } from 'next'
 
-const SITE_URL = 'https://armeltindo.vercel.app'
+const SITE_URL = 'https://tindo-armel.vercel.app'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
