@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, Heart } from 'lucide-react'
+import { Github, Linkedin, Mail } from 'lucide-react'
 import Image from 'next/image'
 
 export default function Footer() {
@@ -54,8 +54,8 @@ export default function Footer() {
             <div className="flex gap-3 mb-4">
               {[
                 { href: 'https://github.com/armeltindo', icon: Github, label: 'GitHub' },
-                { href: 'https://linkedin.com/in/tindo-armel', icon: Linkedin, label: 'LinkedIn' },
-                { href: 'mailto:tindo.armel@example.com', icon: Mail, label: 'Email' },
+                { href: 'https://www.linkedin.com/in/armel-tindo-839916190', icon: Linkedin, label: 'LinkedIn' },
+                { href: 'mailto:armeltindo@gmail.com', icon: Mail, label: 'Email' },
               ].map(({ href, icon: Icon, label }) => (
                 <a
                   key={href}
@@ -80,15 +80,9 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="pt-8 border-t border-dark-border flex flex-col sm:flex-row items-center justify-between gap-3">
+        <div className="pt-8 border-t border-dark-border flex items-center justify-center">
           <p className="text-text-muted text-xs font-mono">
             © {currentYear} TINDO Armel. Tous droits réservés.
-          </p>
-          <p className="text-text-muted text-xs flex items-center gap-1.5">
-            Fait avec <Heart size={11} className="text-danger fill-danger" /> en utilisant{' '}
-            <span className="text-primary-light">Next.js</span> ·{' '}
-            <span className="text-gold-light">Supabase</span> · déployé sur{' '}
-            <span className="text-text-secondary">Vercel</span>
           </p>
         </div>
       </div>

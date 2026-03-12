@@ -8,15 +8,15 @@ const contactInfo = [
   {
     icon: Mail,
     label: 'Email',
-    value: 'tindo.armel@example.com',
-    href: 'mailto:tindo.armel@example.com',
+    value: 'armeltindo@gmail.com',
+    href: 'mailto:armeltindo@gmail.com',
     color: 'primary',
   },
   {
     icon: Linkedin,
     label: 'LinkedIn',
     value: '/in/tindo-armel',
-    href: 'https://linkedin.com/in/tindo-armel',
+    href: 'https://www.linkedin.com/in/armel-tindo-839916190',
     color: 'primary',
   },
   {

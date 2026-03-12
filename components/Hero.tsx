@@ -128,8 +128,8 @@ export default function Hero() {
               <div className="flex gap-3">
                 {[
                   { href: 'https://github.com/armeltindo', icon: Github, label: 'GitHub' },
-                  { href: 'https://linkedin.com/in/tindo-armel', icon: Linkedin, label: 'LinkedIn' },
-                  { href: 'mailto:tindo.armel@example.com', icon: Mail, label: 'Email' },
+                  { href: 'https://www.linkedin.com/in/armel-tindo-839916190', icon: Linkedin, label: 'LinkedIn' },
+                  { href: 'mailto:armeltindo@gmail.com', icon: Mail, label: 'Email' },
                 ].map(({ href, icon: Icon, label }) => (
                   <a
                     key={href}
