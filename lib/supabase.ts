@@ -35,6 +35,8 @@ export type Project = {
   image_url?: string
   featured: boolean
   category: 'machine-learning' | 'deep-learning' | 'nlp' | 'computer-vision' | 'data-analysis'
+  metric?: string
+  metric_color?: 'primary' | 'gold' | 'teal'
   created_at: string
 }
 
@@ -43,5 +45,16 @@ export type ContactMessage = {
   name: string
   email: string
   message: string
+  created_at?: string
+}
+
+export type Testimonial = {
+  id: number
+  name: string
+  role: string
+  company: string
+  content: string
+  avatar_url?: string
+  rating: number
   created_at?: string
 }

@@ -1,131 +1,167 @@
 'use client'
+
 import { useEffect, useRef } from 'react'
-import { GraduationCap, Briefcase, Award } from 'lucide-react'
+import { GraduationCap, Briefcase, Award, BookOpen } from 'lucide-react'
 
 const events = [
   {
     year: '2026',
+    period: 'En cours',
     title: 'Formation Datafid2',
-    org: 'ENSEA — Abidjan',
-    desc: 'Spécialisation Data Science pour la Douane et les Impôts. Développement d\'applications Shiny R, modèles de scoring de fraude, NLP et ML appliqué.',
+    org: "ENSEA — Abidjan, Côte d'Ivoire",
+    desc: "Programme de spécialisation avancée en Data Science appliqué aux administrations douanières et fiscales africaines. Développement de solutions IA pour le contrôle fiscal et la détection de fraude.",
     icon: GraduationCap,
     type: 'education',
-    tags: ['R Shiny', 'Machine Learning', 'Scoring Fraude'],
-    side: 'right',
+    tags: ['R Shiny', 'Machine Learning', 'Scoring Fraude', 'NLP'],
+    color: 'primary',
   },
   {
     year: '2024',
+    period: '2024 — Présent',
     title: 'Statisticien-Économiste',
-    org: 'DGI Bénin',
-    desc: 'Analyse de données fiscales, modélisation économique, développement d\'outils d\'aide à la décision et de détection des anomalies déclaratives.',
+    org: 'Direction Générale des Impôts (DGID) — Cotonou, Bénin',
+    desc: "Analyse de données fiscales et macroéconomiques, modélisation prédictive des recettes, développement d'outils d'aide à la décision et détection des anomalies déclaratives via le Machine Learning.",
     icon: Briefcase,
     type: 'work',
-    tags: ['Python', 'R', 'SQL', 'Power BI'],
-    side: 'left',
+    tags: ['Python', 'R', 'SQL', 'Power BI', 'XGBoost'],
+    color: 'gold',
   },
   {
     year: '2023',
+    period: '2021 — 2023',
     title: 'Master Statistique & Économétrie',
-    org: 'ENSEA — Abidjan',
-    desc: 'Formation avancée en méthodes quantitatives, économétrie, analyse des séries temporelles et introduction au Machine Learning.',
-    icon: GraduationCap,
+    org: "ENSEA — Abidjan, Côte d'Ivoire",
+    desc: "Formation de haut niveau en méthodes quantitatives, économétrie avancée, analyse des séries temporelles et introduction au Machine Learning. Mémoire sur la modélisation du risque fiscal au Bénin.",
+    icon: BookOpen,
     type: 'education',
-    tags: ['Économétrie', 'Séries temporelles', 'R', 'Stata'],
-    side: 'right',
+    tags: ['Économétrie', 'Séries temporelles', 'R', 'Stata', 'ACP'],
+    color: 'teal',
   },
   {
     year: '2022',
-    title: 'Certification Data Science',
-    org: 'Coursera / DeepLearning.AI',
-    desc: 'Spécialisation complète en Data Science et Deep Learning — réseaux de neurones, NLP, Computer Vision.',
+    period: '2022',
+    title: 'Spécialisation Deep Learning',
+    org: 'DeepLearning.AI — Coursera',
+    desc: "Certification complète en Deep Learning couvrant les réseaux de neurones, les CNN pour la vision artificielle, les RNN et LSTM pour les séries temporelles, et le NLP avec les Transformers.",
     icon: Award,
     type: 'cert',
-    tags: ['TensorFlow', 'Keras', 'NLP', 'CNN'],
-    side: 'left',
+    tags: ['TensorFlow', 'Keras', 'CNN', 'LSTM', 'NLP'],
+    color: 'primary',
   },
 ]
+
+const colorMap = {
+  primary: {
+    dot: 'bg-primary/20 border-primary/40',
+    icon: 'text-primary-light',
+    year: 'bg-primary/10 text-primary-light border-primary/25',
+    tag: 'tag-pill',
+    period: 'text-primary-light',
+  },
+  gold: {
+    dot: 'bg-gold/20 border-gold/40',
+    icon: 'text-gold-light',
+    year: 'bg-gold/10 text-gold-light border-gold/25',
+    tag: 'tag-pill-gold',
+    period: 'text-gold-light',
+  },
+  teal: {
+    dot: 'bg-teal/20 border-teal/40',
+    icon: 'text-teal-light',
+    year: 'bg-teal/10 text-teal-light border-teal/25',
+    tag: 'tag-pill-teal',
+    period: 'text-teal-light',
+  },
+}
 
 export default function Timeline() {
   const sectionRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      (entries) => entries.forEach(e => {
-        if (e.isIntersecting) e.target.classList.add('visible')
-      }),
-      { threshold: 0.1 }
+      (entries) => entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add('visible') }),
+      { threshold: 0.08 }
     )
-    sectionRef.current?.querySelectorAll('.reveal').forEach(el => observer.observe(el))
+    sectionRef.current?.querySelectorAll('.reveal').forEach((el) => observer.observe(el))
     return () => observer.disconnect()
   }, [])
 
   return (
-    <section id="timeline" ref={sectionRef} className="py-28 px-6 relative overflow-hidden">
-      <div className="absolute inset-0 bg-grid opacity-20" />
+    <section
+      id="timeline"
+      ref={sectionRef}
+      className="py-24 lg:py-32 px-4 sm:px-6 lg:px-8 bg-dark-surface relative overflow-hidden"
+    >
+      <div className="orb-primary w-80 h-80 top-1/2 -translate-y-1/2 right-0 opacity-20" />
 
-      <div className="max-w-5xl mx-auto relative">
+      <div className="max-w-4xl mx-auto relative">
 
         {/* Header */}
-        <div className="text-center mb-20 reveal">
-          <span className="font-mono text-xs text-cyan-DEFAULT tracking-[0.3em] uppercase mb-3 block">
-            — parcours —
+        <div className="mb-16 reveal">
+          <span className="section-badge mb-4">
+            Parcours
           </span>
-          <h2 className="font-display text-5xl text-text-primary">
-            Mon <span className="gradient-text">Parcours</span>
+          <h2 className="section-title mt-4">
+            Mon <span className="gradient-text">Histoire</span>
           </h2>
+          <p className="text-text-secondary mt-4 max-w-lg text-lg">
+            De la formation académique à l&apos;expertise terrain, un parcours construit
+            autour des données et de l&apos;impact.
+          </p>
         </div>
 
-        {/* Timeline */}
-        <div className="relative">
-          {/* Center line */}
-          <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-border to-transparent" />
+        {/* Timeline entries */}
+        <div className="relative pl-12 sm:pl-16">
+          {/* Vertical line */}
+          <div className="timeline-connector" />
 
-          <div className="space-y-12">
+          <div className="space-y-10">
             {events.map((ev, i) => {
               const Icon = ev.icon
-              const isRight = ev.side === 'right'
+              const colors = colorMap[ev.color as keyof typeof colorMap]
+
               return (
                 <div
                   key={i}
-                  className={`reveal flex items-center gap-0 ${isRight ? 'flex-row' : 'flex-row-reverse'}`}
-                  style={{ transitionDelay: `${i * 0.1}s` }}
+                  className="reveal relative"
+                  style={{ transitionDelay: `${i * 0.12}s` }}
                 >
-                  {/* Content card */}
-                  <div className={`w-5/12 ${isRight ? 'pr-10 text-right' : 'pl-10 text-left'}`}>
-                    <div className="bg-surface border border-border rounded-xl p-5 card-hover cursor-default">
-                      <div className={`flex items-center gap-2 mb-2 ${isRight ? 'justify-end' : 'justify-start'}`}>
-                        <span className="font-mono text-xs text-cyan-DEFAULT bg-cyan-glow px-2 py-1 rounded">
-                          {ev.year}
-                        </span>
-                        <span className={`font-mono text-xs uppercase tracking-wider ${
-                          ev.type === 'education' ? 'text-violet-bright' :
-                          ev.type === 'work' ? 'text-cyan-DEFAULT' : 'text-amber-400'
-                        }`}>
-                          {ev.type === 'education' ? 'Formation' : ev.type === 'work' ? 'Expérience' : 'Certification'}
-                        </span>
-                      </div>
-                      <h3 className="text-text-primary font-semibold text-lg mb-1">{ev.title}</h3>
-                      <p className="font-mono text-xs text-text-muted mb-3">{ev.org}</p>
-                      <p className="text-text-secondary text-sm leading-relaxed mb-3">{ev.desc}</p>
-                      <div className={`flex flex-wrap gap-1.5 ${isRight ? 'justify-end' : 'justify-start'}`}>
-                        {ev.tags.map(t => (
-                          <span key={t} className="tag-pill">{t}</span>
-                        ))}
-                      </div>
-                    </div>
+                  {/* Dot */}
+                  <div className={`timeline-dot ${colors.dot} border-2 absolute -left-12 sm:-left-16 top-0`}>
+                    <Icon size={18} className={colors.icon} />
                   </div>
 
-                  {/* Center dot */}
-                  <div className="w-2/12 flex justify-center">
-                    <div className="relative flex flex-col items-center">
-                      <div className="w-10 h-10 rounded-full bg-surface border-2 border-cyan-DEFAULT/40 flex items-center justify-center shadow-cyan z-10">
-                        <Icon size={16} className="text-cyan-DEFAULT" />
-                      </div>
+                  {/* Card */}
+                  <div className="card-base p-5 sm:p-6 ml-2">
+                    {/* Top row */}
+                    <div className="flex flex-wrap items-center gap-2 mb-3">
+                      <span className={`font-mono text-xs px-3 py-1 rounded-full border font-medium ${colors.year}`}>
+                        {ev.year}
+                      </span>
+                      <span className={`font-mono text-xs ${colors.period}`}>
+                        {ev.period}
+                      </span>
+                      <span className="font-mono text-xs text-text-muted uppercase tracking-wider ml-auto">
+                        {ev.type === 'education' ? 'Formation' : ev.type === 'work' ? 'Expérience' : 'Certification'}
+                      </span>
+                    </div>
+
+                    {/* Title & org */}
+                    <h3 className="font-display font-bold text-text-primary text-xl mb-1">
+                      {ev.title}
+                    </h3>
+                    <p className="font-mono text-xs text-text-muted mb-3">{ev.org}</p>
+
+                    {/* Description */}
+                    <p className="text-text-secondary text-sm leading-relaxed mb-4">{ev.desc}</p>
+
+                    {/* Tags */}
+                    <div className="flex flex-wrap gap-2">
+                      {ev.tags.map((t) => (
+                        <span key={t} className={colors.tag}>{t}</span>
+                      ))}
                     </div>
                   </div>
-
-                  {/* Empty side */}
-                  <div className="w-5/12" />
                 </div>
               )
             })}
