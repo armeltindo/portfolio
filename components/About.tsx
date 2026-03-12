@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
+import Image from 'next/image'
 import { Target, Lightbulb, Users, Award } from 'lucide-react'
 
 const highlights = [
@@ -113,9 +114,35 @@ export default function About() {
             </div>
           </div>
 
-          {/* Right — Stats grid */}
+          {/* Right — Photo + Stats grid */}
           <div className="reveal" style={{ transitionDelay: '0.15s' }}>
-            <div className="grid grid-cols-2 gap-4 mb-8">
+
+            {/* Profile photo */}
+            <div className="flex justify-center mb-8">
+              <div className="relative">
+                {/* Outer glow ring */}
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/30 to-gold/20 blur-xl scale-110" />
+                {/* Gradient border */}
+                <div className="relative p-[3px] rounded-2xl bg-gradient-to-br from-primary via-gold/60 to-primary shadow-primary">
+                  <div className="rounded-2xl overflow-hidden w-64 h-80">
+                    <Image
+                      src="/profile.jpg"
+                      alt="TINDO Armel — Data Scientist & ML Engineer"
+                      width={256}
+                      height={320}
+                      className="w-full h-full object-cover object-top"
+                      priority
+                    />
+                  </div>
+                </div>
+                {/* Badge ENSEA */}
+                <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-dark-card border border-primary/30 rounded-full px-4 py-1.5 whitespace-nowrap shadow-card">
+                  <span className="font-mono text-xs text-primary-light font-medium">📍 ENSEA · Abidjan</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-4 mb-8 mt-6">
               {highlights.map((h) => (
                 <div
                   key={h.label}

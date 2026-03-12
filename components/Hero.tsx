@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
+import Image from 'next/image'
 import { Github, Linkedin, Mail, ArrowDown, MapPin, Sparkles } from 'lucide-react'
 
 const ROLES = [
@@ -149,15 +150,22 @@ export default function Hero() {
           <div className="hidden lg:flex items-center justify-center relative">
             <div className="relative w-[420px] h-[420px]">
 
-              {/* Main circle */}
+              {/* Outer rings */}
               <div className="absolute inset-0 rounded-full border border-primary/20 animate-pulse-soft" />
               <div className="absolute inset-4 rounded-full border border-primary/10" />
+              {/* Gradient ring behind photo */}
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-52 h-52 rounded-full bg-gradient-to-br from-primary to-primary-dark flex items-center justify-center shadow-primary relative overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-white/10" />
-                  <span className="font-display font-extrabold text-6xl text-white relative z-10">
-                    AT
-                  </span>
+                <div className="w-[260px] h-[260px] rounded-full p-[3px] bg-gradient-to-br from-primary via-gold to-primary shadow-primary">
+                  <div className="w-full h-full rounded-full overflow-hidden bg-dark-card">
+                    <Image
+                      src="/profile.jpg"
+                      alt="TINDO Armel — Data Scientist"
+                      width={260}
+                      height={260}
+                      className="w-full h-full object-cover object-top"
+                      priority
+                    />
+                  </div>
                 </div>
               </div>
 
