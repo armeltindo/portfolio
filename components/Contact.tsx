@@ -1,8 +1,20 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { z } from 'zod'
 import { Send, CheckCircle, AlertCircle, Mail, MapPin, Linkedin, Clock, Github } from 'lucide-react'
 import { getSupabase } from '@/lib/supabase'
+
+const schema = z.object({
+  name: z.string().min(2, 'Minimum 2 caractères').max(80),
+  email: z.string().email('Adresse email invalide'),
+  subject: z.string().max(120).optional(),
+  message: z.string().min(10, 'Minimum 10 caractères').max(2000),
+})
+
+type FormData = z.infer<typeof schema>
 
 const contactInfo = [
   {
@@ -37,9 +49,15 @@ const contactInfo = [
 
 export default function Contact() {
   const sectionRef = useRef<HTMLElement>(null)
-  const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' })
-  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle')
-  const [errorMsg, setErrorMsg] = useState('')
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitting, isSubmitSuccessful },
+  } = useForm<FormData>({ resolver: zodResolver(schema) })
+
+  const [supabaseError, setSupabaseError] = useState('')
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -50,27 +68,21 @@ export default function Contact() {
     return () => observer.disconnect()
   }, [])
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    if (!form.name || !form.email || !form.message) return
-    setStatus('sending')
-    setErrorMsg('')
-
-    try {
-      const client = getSupabase()
-      if (!client) throw new Error('Service de messagerie non configuré.')
-
-      const { error } = await client
-        .from('contact_messages')
-        .insert([{ name: form.name, email: form.email, message: `[${form.subject}] ${form.message}` }])
-
-      if (error) throw error
-      setStatus('success')
-      setForm({ name: '', email: '', subject: '', message: '' })
-    } catch (err: unknown) {
-      setStatus('error')
-      setErrorMsg(err instanceof Error ? err.message : "Erreur lors de l'envoi. Réessayez.")
+  const onSubmit = async (data: FormData) => {
+    setSupabaseError('')
+    const client = getSupabase()
+    if (!client) {
+      setSupabaseError('Service de messagerie non configuré.')
+      return
     }
+    const { error } = await client
+      .from('contact_messages')
+      .insert([{ name: data.name, email: data.email, message: `[${data.subject ?? ''}] ${data.message}` }])
+    if (error) {
+      setSupabaseError(error.message)
+      return
+    }
+    reset()
   }
 
   return (
@@ -173,95 +185,104 @@ export default function Contact() {
                 Envoyez-moi un message
               </h3>
 
-              <form onSubmit={handleSubmit} className="space-y-5">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              {isSubmitSuccessful && !supabaseError ? (
+                <div className="flex flex-col items-center justify-center gap-4 py-12 text-center">
+                  <CheckCircle size={40} className="text-success" />
+                  <p className="text-text-primary font-semibold text-lg">Message envoyé !</p>
+                  <p className="text-text-secondary text-sm">Je vous réponds sous 48h.</p>
+                  <button
+                    onClick={() => reset()}
+                    className="btn-outline mt-2"
+                  >
+                    Envoyer un autre message
+                  </button>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit(onSubmit)} className="space-y-5" noValidate>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div>
+                      <label className="block text-text-secondary text-sm font-medium mb-2">
+                        Nom complet <span className="text-danger">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        className={`input-field ${errors.name ? 'border-danger/60 focus:border-danger' : ''}`}
+                        placeholder="Votre nom"
+                        {...register('name')}
+                      />
+                      {errors.name && (
+                        <p className="mt-1 text-danger text-xs">{errors.name.message}</p>
+                      )}
+                    </div>
+                    <div>
+                      <label className="block text-text-secondary text-sm font-medium mb-2">
+                        Email <span className="text-danger">*</span>
+                      </label>
+                      <input
+                        type="email"
+                        className={`input-field ${errors.email ? 'border-danger/60 focus:border-danger' : ''}`}
+                        placeholder="votre@email.com"
+                        {...register('email')}
+                      />
+                      {errors.email && (
+                        <p className="mt-1 text-danger text-xs">{errors.email.message}</p>
+                      )}
+                    </div>
+                  </div>
+
                   <div>
                     <label className="block text-text-secondary text-sm font-medium mb-2">
-                      Nom complet <span className="text-danger">*</span>
+                      Sujet
                     </label>
                     <input
                       type="text"
                       className="input-field"
-                      placeholder="Votre nom"
-                      value={form.name}
-                      onChange={(e) => setForm({ ...form, name: e.target.value })}
-                      required
+                      placeholder="Ex: Projet ML, Collaboration, Question..."
+                      {...register('subject')}
                     />
                   </div>
+
                   <div>
                     <label className="block text-text-secondary text-sm font-medium mb-2">
-                      Email <span className="text-danger">*</span>
+                      Message <span className="text-danger">*</span>
                     </label>
-                    <input
-                      type="email"
-                      className="input-field"
-                      placeholder="votre@email.com"
-                      value={form.email}
-                      onChange={(e) => setForm({ ...form, email: e.target.value })}
-                      required
+                    <textarea
+                      rows={6}
+                      className={`input-field resize-none ${errors.message ? 'border-danger/60 focus:border-danger' : ''}`}
+                      placeholder="Décrivez votre projet, vos besoins ou votre message..."
+                      {...register('message')}
                     />
+                    {errors.message && (
+                      <p className="mt-1 text-danger text-xs">{errors.message.message}</p>
+                    )}
                   </div>
-                </div>
 
-                <div>
-                  <label className="block text-text-secondary text-sm font-medium mb-2">
-                    Sujet
-                  </label>
-                  <input
-                    type="text"
-                    className="input-field"
-                    placeholder="Ex: Projet ML, Collaboration, Question..."
-                    value={form.subject}
-                    onChange={(e) => setForm({ ...form, subject: e.target.value })}
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-text-secondary text-sm font-medium mb-2">
-                    Message <span className="text-danger">*</span>
-                  </label>
-                  <textarea
-                    rows={6}
-                    className="input-field resize-none"
-                    placeholder="Décrivez votre projet, vos besoins ou votre message..."
-                    value={form.message}
-                    onChange={(e) => setForm({ ...form, message: e.target.value })}
-                    required
-                  />
-                </div>
-
-                {/* Status feedback */}
-                {status === 'success' && (
-                  <div className="flex items-center gap-3 p-4 rounded-xl bg-success/10 border border-success/25 text-success text-sm">
-                    <CheckCircle size={18} className="flex-shrink-0" />
-                    <span>Message envoyé avec succès ! Je vous réponds sous 48h.</span>
-                  </div>
-                )}
-                {status === 'error' && (
-                  <div className="flex items-center gap-3 p-4 rounded-xl bg-danger/10 border border-danger/25 text-danger text-sm">
-                    <AlertCircle size={18} className="flex-shrink-0" />
-                    <span>{errorMsg}</span>
-                  </div>
-                )}
-
-                <button
-                  type="submit"
-                  disabled={status === 'sending'}
-                  className="btn-primary w-full justify-center disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  {status === 'sending' ? (
-                    <>
-                      <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                      Envoi en cours...
-                    </>
-                  ) : (
-                    <>
-                      <Send size={16} />
-                      Envoyer le message
-                    </>
+                  {supabaseError && (
+                    <div className="flex items-center gap-3 p-4 rounded-xl bg-danger/10 border border-danger/25 text-danger text-sm">
+                      <AlertCircle size={18} className="flex-shrink-0" />
+                      <span>{supabaseError}</span>
+                    </div>
                   )}
-                </button>
-              </form>
+
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="btn-primary w-full justify-center disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                        Envoi en cours...
+                      </>
+                    ) : (
+                      <>
+                        <Send size={16} />
+                        Envoyer le message
+                      </>
+                    )}
+                  </button>
+                </form>
+              )}
             </div>
           </div>
         </div>

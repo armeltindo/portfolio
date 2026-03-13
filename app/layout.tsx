@@ -10,17 +10,20 @@ export const metadata: Metadata = {
     template: '%s | TINDO Armel',
   },
   description:
-    'TINDO Armel, Data Scientist et ML Engineer basé à Cotonou, Bénin. Statisticien-Économiste à la DGID, spécialisé en Machine Learning, Deep Learning, NLP et analyse de données appliquée au contexte africain. Datafid2 ENSEA 2026.',
+    'Data Scientist spécialisé en ML appliqué aux administrations fiscales africaines. Scoring de fraude 89% précision, NLP, déploiement en production @ DGID Bénin. ENSEA Datafid2 2026.',
   keywords: [
     'TINDO Armel',
-    'Data Scientist Bénin',
+    'data scientist bénin',
+    'machine learning afrique',
+    'scoring fraude fiscale',
+    'ENSEA datafid2',
     'ML Engineer Afrique',
-    'Machine Learning',
-    'Intelligence Artificielle',
+    'intelligence artificielle administration',
     'Deep Learning',
-    'NLP',
+    'NLP francophone',
     'Python',
     'R',
+    'XGBoost',
     'TensorFlow',
     'Scikit-learn',
     'Power BI',
@@ -58,7 +61,7 @@ export const metadata: Metadata = {
     siteName: 'TINDO Armel — Data Scientist',
     title: 'TINDO Armel — Data Scientist & ML Engineer | Bénin',
     description:
-      'Data Scientist et ML Engineer basé à Cotonou, Bénin. Machine Learning · Deep Learning · NLP · Analyse de données appliquée au contexte africain.',
+      'Data Scientist spécialisé en ML pour administrations fiscales africaines. Scoring fraude 89% précision, déployé en production @ DGID Bénin.',
     images: [
       {
         url: '/og-image.png',

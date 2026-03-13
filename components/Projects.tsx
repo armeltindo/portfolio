@@ -4,79 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 import { Github, ExternalLink, Star, Brain, BarChart2, Eye, MessageSquare, Database, Zap } from 'lucide-react'
 import type { ComponentType } from 'react'
 import { getSupabase, type Project } from '@/lib/supabase'
-
-const DEMO_PROJECTS: Project[] = [
-  {
-    id: 1,
-    title: 'Scoring de Fraude Douanière',
-    description: "Système complet de détection de fraude à l'importation pour la DGID Bénin. Random Forest + XGBoost avec interface R Shiny interactive, feature engineering sur 12 variables, ROC/AUC 0.94 et simulateur de score 0–100 en temps réel.",
-    tags: ['R Shiny', 'XGBoost', 'Random Forest', 'ROC/AUC'],
-    github_url: 'https://github.com/armeltindo',
-    featured: true,
-    category: 'machine-learning',
-    created_at: '2026-02-01',
-    metric: 'F1-score: 0.89',
-    metric_color: 'primary',
-  },
-  {
-    id: 2,
-    title: 'Analyse Flux Commerciaux CEDEAO',
-    description: "Dashboard R Shiny d'analyse multidimensionnelle des échanges commerciaux entre les 15 pays de la CEDEAO. ACP, AFC, clustering K-means, carte Leaflet interactive et génération automatique de rapports PDF.",
-    tags: ['R Shiny', 'FactoMineR', 'K-means', 'Leaflet'],
-    github_url: 'https://github.com/armeltindo',
-    featured: true,
-    category: 'data-analysis',
-    created_at: '2026-01-15',
-    metric: '15 pays analysés',
-    metric_color: 'gold',
-  },
-  {
-    id: 3,
-    title: 'Prévision PIB — Afrique de l\'Ouest',
-    description: "Modèle LSTM pour la prévision du PIB de 8 pays d'Afrique de l'Ouest à horizon 5 ans. Données Banque Mondiale 1990–2024, TensorFlow, RMSE 2.1% sur le jeu de test.",
-    tags: ['Python', 'TensorFlow', 'LSTM', 'Time Series'],
-    github_url: 'https://github.com/armeltindo',
-    featured: false,
-    category: 'deep-learning',
-    created_at: '2025-11-01',
-    metric: 'RMSE: 2.1%',
-    metric_color: 'primary',
-  },
-  {
-    id: 4,
-    title: 'NLP — Sentiment Politique Francophone',
-    description: "Fine-tuning de CamemBERT pour l'analyse de sentiment des discours politiques africains francophones. Corpus 50k tweets, accuracy 91%, déployé via FastAPI.",
-    tags: ['Python', 'CamemBERT', 'HuggingFace', 'FastAPI'],
-    featured: false,
-    category: 'nlp',
-    created_at: '2025-08-01',
-    metric: 'Accuracy: 91%',
-    metric_color: 'teal',
-  },
-  {
-    id: 5,
-    title: 'Dashboard Indicateurs Bénin 2050',
-    description: "Tableau de bord Power BI de suivi des 17 Objectifs de Développement Durable (ODD) au Bénin. 120+ indicateurs, actualisation automatique via API Banque Mondiale, accessible à la présidence.",
-    tags: ['Power BI', 'DAX', 'Python', 'API REST'],
-    featured: false,
-    category: 'data-analysis',
-    created_at: '2025-05-01',
-    metric: '120+ KPIs',
-    metric_color: 'gold',
-  },
-  {
-    id: 6,
-    title: 'AgriSense — Recommandation AgriTech',
-    description: "Système de recommandation de pratiques agricoles pour les petits agriculteurs béninois. Basé sur données météo, sol et marché via Random Forest. Interface web Next.js + API FastAPI.",
-    tags: ['Python', 'Scikit-learn', 'FastAPI', 'Next.js'],
-    github_url: 'https://github.com/armeltindo',
-    featured: false,
-    category: 'machine-learning',
-    created_at: '2025-03-01',
-    metric: '94% satisfaction',
-    metric_color: 'primary',
-  },
-]
+import { PROJECTS as DEMO_PROJECTS } from '@/data/projects'
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const CATEGORY_ICONS: Record<string, ComponentType<any>> = {
@@ -167,10 +95,10 @@ export default function Projects() {
           <span className="section-badge mb-4">Projets</span>
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
             <h2 className="section-title mt-4">
-              Mes <span className="gradient-text">Réalisations</span>
+              Preuves <span className="gradient-text">concrètes</span>
             </h2>
             <p className="text-text-secondary max-w-sm">
-              Applications réelles de ML/IA dans les domaines fiscal, économique et agritech.
+              Modèles en production, pas juste en notebook — données fiscales et économiques africaines réelles.
             </p>
           </div>
         </div>

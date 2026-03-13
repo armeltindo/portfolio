@@ -5,16 +5,16 @@ import Image from 'next/image'
 import { Github, Linkedin, Mail, ArrowDown, MapPin, Sparkles } from 'lucide-react'
 
 const ROLES = [
-  'Data Scientist',
-  'ML Engineer',
+  'Data Scientist — DGID Bénin',
+  'ML Engineer en Production',
   'Statisticien-Économiste',
-  'AI Practitioner',
+  'Expert IA · Afrique fiscale',
 ]
 
 const stats = [
-  { value: '8+', label: 'Projets ML/IA' },
-  { value: '15+', label: 'Technologies' },
-  { value: '2026', label: 'Datafid2 ENSEA' },
+  { value: '89%', label: 'Précision fraude fiscale' },
+  { value: '3+', label: 'Ans en prod @ DGID' },
+  { value: '#1', label: 'Promo ENSEA 2023' },
 ]
 
 export default function Hero() {
@@ -70,12 +70,22 @@ export default function Hero() {
           {/* Left column */}
           <div className="flex flex-col justify-center space-y-8 animate-fade-up">
 
-            {/* Location badge */}
-            <div className="flex items-center gap-2">
+            {/* Location + availability badges */}
+            <div className="flex flex-wrap items-center gap-2">
               <span className="section-badge">
                 <MapPin size={12} />
-                Cotonou, Bénin · Disponible
+                Cotonou, Bénin
               </span>
+              <a
+                href="#contact"
+                className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-success/30 bg-success/10 text-success text-xs font-medium hover:bg-success/20 transition-all duration-200"
+              >
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-success opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-success" />
+                </span>
+                Disponible — Consulting &amp; Freelance
+              </a>
             </div>
 
             {/* Name */}
@@ -102,13 +112,20 @@ export default function Hero() {
               </div>
             </div>
 
+            {/* Tagline */}
+            <p className="text-text-primary text-xl font-semibold leading-snug max-w-lg">
+              Je transforme les données fiscales africaines
+              en décisions à{' '}
+              <span className="text-primary-light">89% de précision.</span>
+            </p>
+
             {/* Description */}
-            <p className="text-text-secondary text-lg leading-relaxed max-w-lg">
-              Statisticien-Économiste à la{' '}
-              <span className="text-text-primary font-semibold">DGI Bénin</span>, je transforme
-              des données complexes en décisions stratégiques. Passionné de{' '}
-              <span className="text-primary-light font-medium">Machine Learning</span> et d&apos;IA
-              appliquée au contexte africain.
+            <p className="text-text-secondary text-base leading-relaxed max-w-lg">
+              Praticien <span className="text-text-primary font-medium">DGID</span> + chercheur{' '}
+              <span className="text-text-primary font-medium">ENSEA Datafid2</span> — rare combinaison
+              terrain + recherche. Python &amp; R à haut niveau, modèles{' '}
+              <span className="text-primary-light font-medium">déployés en production</span>,
+              pas juste en notebook.
             </p>
 
             {/* CTAs */}
