@@ -5,10 +5,10 @@ import Image from 'next/image'
 import { Github, Linkedin, Mail, ArrowDown, MapPin, Sparkles } from 'lucide-react'
 
 const ROLES = [
-  'Data Scientist',
-  'ML Engineer',
+  'Data Scientist — DGID Bénin',
+  'ML Engineer en Production',
   'Statisticien-Économiste',
-  'AI Practitioner',
+  'Expert IA · Afrique fiscale',
 ]
 
 const stats = [
