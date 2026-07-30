@@ -15,18 +15,18 @@ const items = [
 
 export default function Approche() {
   return (
-    <div id="approche" className="max-w-[1100px] mx-auto px-8 py-[72px]">
-      <div className="section-label">Ce que je fais</div>
+    <section id="approche" className="max-w-[1100px] mx-auto px-8 py-[72px]">
+      <h2 className="section-label">Ce que je fais</h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-7">
         {items.map(({ title, text }) => (
           <div key={title} className="p-7 bg-slate-50 rounded-[10px]">
-            <div className="font-bold text-[17px] leading-[1.3] text-navy-900 mb-2.5">
+            <h3 className="font-bold text-[17px] leading-[1.3] text-navy-900 mb-2.5">
               {title}
-            </div>
+            </h3>
             <div className="text-[13.5px] leading-[1.6] text-slate-600">{text}</div>
           </div>
         ))}
       </div>
-    </div>
+    </section>
   )
 }

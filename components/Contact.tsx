@@ -1,13 +1,13 @@
 export default function Contact() {
   return (
-    <div id="contact" className="bg-navy text-white">
+    <section id="contact" className="bg-navy text-white">
       <div className="max-w-[1100px] mx-auto px-8 py-16 text-center">
-        <div className="font-extrabold text-[30px] leading-[1.3] text-balance">
+        <h2 className="font-extrabold text-[30px] leading-[1.3] text-balance">
           Discutons de votre prochain projet data.
-        </div>
-        <div className="text-[14.5px] leading-[1.6] text-onnavy-sub2 mt-3">
+        </h2>
+        <p className="text-[14.5px] leading-[1.6] text-onnavy-sub2 mt-3">
           Abomey-Calavi, Bénin · (+229) 01 95 79 51 32
-        </div>
+        </p>
         <div className="flex gap-3 justify-center flex-wrap mt-7">
           <a
             href="mailto:armeltindo@gmail.com"
@@ -23,6 +23,6 @@ export default function Contact() {
           </a>
         </div>
       </div>
-    </div>
+    </section>
   )
 }

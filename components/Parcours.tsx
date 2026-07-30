@@ -23,8 +23,8 @@ const roles = [
 
 export default function Parcours() {
   return (
-    <div id="parcours" className="max-w-[1100px] mx-auto px-8 py-[72px]">
-      <div className="section-label">Parcours</div>
+    <section id="parcours" className="max-w-[1100px] mx-auto px-8 py-[72px]">
+      <h2 className="section-label">Parcours</h2>
       <div className="flex flex-col">
         {roles.map(({ period, title, text }, i) => (
           <div
@@ -37,9 +37,9 @@ export default function Parcours() {
               {period}
             </div>
             <div>
-              <div className="font-bold text-[16px] leading-[1.3] text-navy-900">
+              <h3 className="font-bold text-[16px] leading-[1.3] text-navy-900">
                 {title}
-              </div>
+              </h3>
               <div className="text-[13.5px] leading-[1.5] text-slate-600 mt-1">
                 {text}
               </div>
@@ -52,6 +52,6 @@ export default function Parcours() {
           Voir le CV complet et détaillé →
         </a>
       </div>
-    </div>
+    </section>
   )
 }

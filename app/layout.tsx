@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Public_Sans } from 'next/font/google'
+import { Analytics } from '@vercel/analytics/react'
 import './globals.css'
 
 const publicSans = Public_Sans({
@@ -8,7 +9,10 @@ const publicSans = Public_Sans({
   variable: '--font-body',
 })
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://armel-tindo.vercel.app'
+
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: 'Armel Tindo — Data Science & Intelligence Artificielle',
   description:
     "Ingénieur Statisticien Économiste, je conçois des modèles de machine learning et des méthodes statistiques au service des politiques fiscales et socio-économiques.",
@@ -28,6 +32,7 @@ export default function RootLayout({
     <html lang="fr" className="scroll-smooth">
       <body className={`${publicSans.variable} font-sans antialiased`}>
         {children}
+        <Analytics />
       </body>
     </html>
   )

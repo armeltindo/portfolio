@@ -2,7 +2,10 @@ import Image from 'next/image'
 
 export default function Hero() {
   return (
-    <div className="max-w-[1100px] mx-auto px-8 pt-[88px] pb-16 grid grid-cols-1 md:grid-cols-[1.3fr_0.9fr] gap-14 items-center">
+    <section
+      aria-label="Présentation"
+      className="max-w-[1100px] mx-auto px-8 pt-[88px] pb-16 grid grid-cols-1 md:grid-cols-[1.3fr_0.9fr] gap-14 items-center"
+    >
       <div>
         <div className="font-semibold text-[14px] tracking-[0.1em] uppercase text-accent mb-[18px]">
           Data Science &amp; Intelligence Artificielle
@@ -45,6 +48,6 @@ export default function Hero() {
           className="object-cover object-top"
         />
       </div>
-    </div>
+    </section>
   )
 }

@@ -38,3 +38,14 @@ a:hover {
   border-radius: 20px;
   padding: 8px 14px;
 }
+
+@media print {
+  body {
+    background: #fff;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  a {
+    text-decoration: none;
+  }
+}

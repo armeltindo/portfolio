@@ -15,15 +15,15 @@ const points = [
 
 export default function ProjetPhare() {
   return (
-    <div id="projet" className="bg-slate-50 border-y border-slate-200">
+    <section id="projet" className="bg-slate-50 border-y border-slate-200">
       <div className="max-w-[1100px] mx-auto px-8 py-[72px]">
-        <div className="section-label">Projet phare</div>
+        <h2 className="section-label">Projet phare</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
           <div>
-            <div className="font-extrabold text-[28px] leading-[1.25] text-navy-deep text-balance">
+            <h3 className="font-extrabold text-[28px] leading-[1.25] text-navy-deep text-balance">
               Projet Datafid — catégoriser 55 493 créances fiscales par
               apprentissage supervisé
-            </div>
+            </h3>
             <div className="font-medium text-[13px] leading-[1.4] text-accent mt-2.5">
               Direction Générale des Impôts · 2026
             </div>
@@ -38,6 +38,6 @@ export default function ProjetPhare() {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   )
 }

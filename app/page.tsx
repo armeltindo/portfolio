@@ -12,14 +12,16 @@ export default function Home() {
   return (
     <div className="font-sans text-ink max-w-full overflow-x-hidden">
       <Navbar />
-      <Hero />
-      <Stats />
-      <Approche />
-      <ProjetPhare />
-      <Parcours />
-      <FormationsLangues />
-      <Temoignage />
-      <Contact />
+      <main>
+        <Hero />
+        <Stats />
+        <Approche />
+        <ProjetPhare />
+        <Parcours />
+        <FormationsLangues />
+        <Temoignage />
+        <Contact />
+      </main>
     </div>
   )
 }
