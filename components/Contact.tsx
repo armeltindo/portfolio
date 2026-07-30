@@ -29,6 +29,12 @@ export default function Contact() {
           >
             LinkedIn
           </a>
+          <a
+            href="https://wa.me/22995795132"
+            className="font-semibold text-[14px] text-white bg-white/[0.14] px-6 py-[14px] rounded-md no-underline whitespace-nowrap"
+          >
+            WhatsApp
+          </a>
         </div>
       </div>
     </section>
