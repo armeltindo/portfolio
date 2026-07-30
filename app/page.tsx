@@ -1,28 +1,25 @@
 import Navbar from '@/components/Navbar'
 import Hero from '@/components/Hero'
-import Timeline from '@/components/Timeline'
-import Skills from '@/components/Skills'
-import Projects from '@/components/Projects'
+import Stats from '@/components/Stats'
+import Approche from '@/components/Approche'
+import ProjetPhare from '@/components/ProjetPhare'
+import Parcours from '@/components/Parcours'
+import FormationsLangues from '@/components/FormationsLangues'
+import Temoignage from '@/components/Temoignage'
 import Contact from '@/components/Contact'
-import Footer from '@/components/Footer'
 
 export default function Home() {
   return (
-    <>
-      {/* Scan line global */}
-      <div className="scan-line" />
-
+    <div className="font-sans text-ink max-w-full overflow-x-hidden">
       <Navbar />
-
-      <main>
-        <Hero />
-        <Timeline />
-        <Skills />
-        <Projects />
-        <Contact />
-      </main>
-
-      <Footer />
-    </>
+      <Hero />
+      <Stats />
+      <Approche />
+      <ProjetPhare />
+      <Parcours />
+      <FormationsLangues />
+      <Temoignage />
+      <Contact />
+    </div>
   )
 }

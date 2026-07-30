@@ -1,30 +1,20 @@
 import type { Metadata } from 'next'
-import { Space_Grotesk, Fira_Code, DM_Serif_Display } from 'next/font/google'
+import { Public_Sans } from 'next/font/google'
 import './globals.css'
 
-const dmSerif = DM_Serif_Display({
-  weight: ['400'],
-  subsets: ['latin'],
-  variable: '--font-display',
-})
-
-const spaceGrotesk = Space_Grotesk({
+const publicSans = Public_Sans({
+  weight: ['400', '500', '600', '700', '800'],
   subsets: ['latin'],
   variable: '--font-body',
 })
 
-const firaCode = Fira_Code({
-  subsets: ['latin'],
-  variable: '--font-mono',
-})
-
 export const metadata: Metadata = {
-  title: 'TINDO Armel — Data Scientist & AI Engineer',
-  description: 'Portfolio de Data Science, Machine Learning et Intelligence Artificielle. Statisticien-Économiste | DGI Bénin | Datafid2 2026.',
-  keywords: ['Data Science', 'Machine Learning', 'IA', 'Python', 'R', 'Portfolio'],
+  title: 'Armel Tindo — Data Science & Intelligence Artificielle',
+  description:
+    "Ingénieur Statisticien Économiste, je conçois des modèles de machine learning et des méthodes statistiques au service des politiques fiscales et socio-économiques.",
   openGraph: {
-    title: 'TINDO Armel — Data Scientist & AI Engineer',
-    description: 'Data Science · Machine Learning · Intelligence Artificielle',
+    title: 'Armel Tindo — Data Science & Intelligence Artificielle',
+    description: 'Je transforme les données publiques en décisions.',
     type: 'website',
   },
 }
@@ -36,7 +26,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="fr" className="scroll-smooth">
-      <body className={`${dmSerif.variable} ${spaceGrotesk.variable} ${firaCode.variable} font-body bg-bg text-text-primary antialiased`}>
+      <body className={`${publicSans.variable} font-sans antialiased`}>
         {children}
       </body>
     </html>
