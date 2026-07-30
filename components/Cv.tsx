@@ -178,6 +178,25 @@ const certifiantes = [
   { year: '2022 —', text: 'R, Python, ML, Visualisation — Kaggle / DGI' },
 ]
 
+const leadership = [
+  {
+    year: '2026 —',
+    text: "Membre fondateur du Réseau des Alumni de l'Institut pour la Gouvernance Démocratique (RA-IGD)",
+  },
+  {
+    year: '2020 – à ce jour —',
+    text: 'Membre du Réseau des Organisations de Jeunesse pour le Développement local et la Coopération Décentralisée (ROJCOD)',
+  },
+  {
+    year: '2020 —',
+    text: "École politique de l'Institut Néerlandais pour la Démocratie Multipartite (NIMD)",
+  },
+  {
+    year: '2017 – 2020 —',
+    text: 'Membre du Parlement des Jeunes du Bénin (PJB), deuxième mandature',
+  },
+]
+
 const qualites = ['Rigueur & précision analytique', 'Autonomie & proactivité', 'Esprit de synthèse & clarté']
 
 const langues = ['Français — Couramment', 'Anglais — Intermédiaire', 'Fon — Maternelle']
@@ -324,6 +343,17 @@ export default function Cv() {
             </div>
           </section>
         </div>
+
+        <section aria-label="Leadership et vie associative">
+          <h2 className="section-label">Leadership &amp; vie associative</h2>
+          <div className="flex flex-col gap-2 text-[14px] leading-[1.5] text-slate-800">
+            {leadership.map(({ year, text }) => (
+              <div key={text}>
+                <span className="font-bold text-navy">{year}</span> {text}
+              </div>
+            ))}
+          </div>
+        </section>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           <section aria-label="Qualités">
