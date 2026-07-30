@@ -29,12 +29,13 @@ export default function Contact() {
           >
             LinkedIn
           </a>
-          <a
-            href="https://wa.me/22995795132"
+          <ObfuscatedLink
+            reversed={PHONE1_REVERSED}
+            kind="whatsapp"
             className="font-semibold text-[14px] text-white bg-white/[0.14] px-6 py-[14px] rounded-md no-underline whitespace-nowrap"
           >
             WhatsApp
-          </a>
+          </ObfuscatedLink>
         </div>
       </div>
     </section>

@@ -8,7 +8,7 @@ function reverseStr(s: string) {
 type Props = {
   /** The real value (email address or dialable phone number), reversed. */
   reversed: string
-  kind: 'email' | 'tel'
+  kind: 'email' | 'tel' | 'whatsapp'
   /** Static text to show once decoded; defaults to the decoded value itself. Ignored if `children` is set. */
   display?: string
   className?: string
@@ -24,7 +24,13 @@ export default function ObfuscatedLink({ reversed, kind, display, className, chi
     setValue(reverseStr(reversed))
   }, [reversed])
 
-  const href = value ? `${kind === 'email' ? 'mailto' : 'tel'}:${value}` : undefined
+  const href = !value
+    ? undefined
+    : kind === 'email'
+      ? `mailto:${value}`
+      : kind === 'whatsapp'
+        ? `https://wa.me/${value.replace(/^\+/, '')}`
+        : `tel:${value}`
   const label = children ?? (value ? display ?? value : '···')
 
   return (
