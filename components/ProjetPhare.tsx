@@ -37,6 +37,19 @@ export default function ProjetPhare() {
             ))}
           </div>
         </div>
+
+        <div className="mt-12 pt-10 border-t border-slate-200">
+          <h3 className="font-bold text-[17px] leading-[1.3] text-navy-900">
+            Comptage automatique de trafic
+          </h3>
+          <div className="font-medium text-[13px] leading-[1.4] text-accent mt-1.5">
+            École d&apos;Été sur l&apos;Intelligence Artificielle · 2023
+          </div>
+          <p className="text-[14px] leading-[1.6] text-slate-600 mt-3 max-w-[600px]">
+            Projet d&apos;équipe mené dans le cadre de l&apos;École d&apos;Été sur
+            l&apos;IA — membre de l&apos;équipe projet.
+          </p>
+        </div>
       </div>
     </section>
   )
