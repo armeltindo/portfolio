@@ -6,6 +6,7 @@ import Approche from '@/components/Approche'
 import ProjetPhare from '@/components/ProjetPhare'
 import Parcours from '@/components/Parcours'
 import FormationsLangues from '@/components/FormationsLangues'
+import Leadership from '@/components/Leadership'
 import Temoignage from '@/components/Temoignage'
 import Contact from '@/components/Contact'
 
@@ -21,6 +22,7 @@ export default function Home() {
         <ProjetPhare />
         <Parcours />
         <FormationsLangues />
+        <Leadership />
         <Temoignage />
         <Contact />
       </main>
