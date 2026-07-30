@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 export default function Hero() {
   return (
     <div className="max-w-[1100px] mx-auto px-8 pt-[88px] pb-16 grid grid-cols-1 md:grid-cols-[1.3fr_0.9fr] gap-14 items-center">
@@ -31,15 +33,17 @@ export default function Hero() {
       </div>
 
       <div
-        className="w-full rounded-[20px] flex flex-col items-center justify-center gap-2 text-slate-500"
-        style={{
-          aspectRatio: '4 / 5',
-          backgroundImage:
-            'repeating-linear-gradient(135deg, rgba(28,43,69,0.06) 0px, rgba(28,43,69,0.06) 10px, rgba(28,43,69,0.02) 10px, rgba(28,43,69,0.02) 20px)',
-          backgroundColor: 'rgba(28,43,69,0.04)',
-        }}
+        className="relative w-full rounded-[20px] overflow-hidden"
+        style={{ aspectRatio: '4 / 5' }}
       >
-        <span className="font-mono text-xs uppercase tracking-wider">Photo</span>
+        <Image
+          src="/hero.jpg"
+          alt="Armel Tindo"
+          fill
+          priority
+          sizes="(max-width: 780px) 100vw, 450px"
+          className="object-cover object-top"
+        />
       </div>
     </div>
   )
