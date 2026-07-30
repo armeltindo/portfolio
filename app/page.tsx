@@ -1,4 +1,5 @@
 import Navbar from '@/components/Navbar'
+import PersonJsonLd from '@/components/PersonJsonLd'
 import Hero from '@/components/Hero'
 import Stats from '@/components/Stats'
 import Approche from '@/components/Approche'
@@ -11,6 +12,7 @@ import Contact from '@/components/Contact'
 export default function Home() {
   return (
     <div className="font-sans text-ink max-w-full overflow-x-hidden">
+      <PersonJsonLd />
       <Navbar />
       <main>
         <Hero />
