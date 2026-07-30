@@ -1,4 +1,6 @@
 import Image from 'next/image'
+import ObfuscatedLink from '@/components/ObfuscatedLink'
+import { EMAIL_REVERSED, PHONE1_REVERSED, PHONE2_REVERSED } from '@/lib/contact'
 
 const domaines = [
   'Data Science & Machine Learning',
@@ -194,10 +196,26 @@ export default function Cv() {
               Ingénieur Statisticien Économiste — Data Science &amp; Intelligence Artificielle
             </p>
             <p className="text-[13px] text-onnavy-sub mt-3 leading-[1.6]">
-              Abomey-Calavi, Bénin · (+229) 01 95 79 51 32 / 01 61 12 07 13 ·{' '}
-              <a href="mailto:armeltindo@gmail.com" className="text-white underline">
-                armeltindo@gmail.com
-              </a>
+              Abomey-Calavi, Bénin ·{' '}
+              <ObfuscatedLink
+                reversed={PHONE1_REVERSED}
+                kind="tel"
+                display="(+229) 01 95 79 51 32"
+                className="text-white underline"
+              />{' '}
+              /{' '}
+              <ObfuscatedLink
+                reversed={PHONE2_REVERSED}
+                kind="tel"
+                display="01 61 12 07 13"
+                className="text-white underline"
+              />{' '}
+              ·{' '}
+              <ObfuscatedLink
+                reversed={EMAIL_REVERSED}
+                kind="email"
+                className="text-white underline"
+              />
               <br />
               <a
                 href="https://www.linkedin.com/in/armel-tindo-839916190/"
@@ -334,10 +352,7 @@ export default function Cv() {
           <h2 className="section-label">Références</h2>
           <p className="text-[13.5px] leading-[1.6] text-slate-600">
             Références disponibles sur demande —{' '}
-            <a href="mailto:armeltindo@gmail.com" className="underline">
-              armeltindo@gmail.com
-            </a>
-            .
+            <ObfuscatedLink reversed={EMAIL_REVERSED} kind="email" className="underline" />.
           </p>
         </section>
       </div>

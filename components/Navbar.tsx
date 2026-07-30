@@ -1,5 +1,7 @@
 'use client'
 import { useState } from 'react'
+import ObfuscatedLink from '@/components/ObfuscatedLink'
+import { EMAIL_REVERSED } from '@/lib/contact'
 
 const links = [
   { href: '#approche', label: 'Approche' },
@@ -31,12 +33,13 @@ export default function Navbar() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <a
-            href="mailto:armeltindo@gmail.com"
+          <ObfuscatedLink
+            reversed={EMAIL_REVERSED}
+            kind="email"
             className="hidden md:inline-block font-semibold text-[13px] text-white bg-navy px-[18px] py-[10px] rounded-md no-underline whitespace-nowrap"
           >
             Me contacter
-          </a>
+          </ObfuscatedLink>
           <button
             type="button"
             aria-label={open ? 'Fermer le menu' : 'Ouvrir le menu'}
@@ -64,13 +67,14 @@ export default function Navbar() {
               {label}
             </a>
           ))}
-          <a
-            href="mailto:armeltindo@gmail.com"
+          <ObfuscatedLink
+            reversed={EMAIL_REVERSED}
+            kind="email"
             onClick={() => setOpen(false)}
             className="font-semibold text-[14px] text-white bg-navy px-[18px] py-[10px] rounded-md no-underline text-center"
           >
             Me contacter
-          </a>
+          </ObfuscatedLink>
         </nav>
       )}
     </header>
