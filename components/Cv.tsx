@@ -256,7 +256,7 @@ export default function Cv() {
           </section>
           <section aria-label="Outils et logiciels">
             <h2 className="section-label">Outils &amp; logiciels</h2>
-            <div className="flex flex-col gap-1.5 text-[13.5px] leading-[1.5] text-slate-800">
+            <div className="flex flex-col gap-1.5 text-[14px] leading-[1.5] text-slate-800">
               {outils.map(({ label, text }) => (
                 <div key={label}>
                   <span className="font-bold text-navy">{label} — </span>
@@ -283,7 +283,7 @@ export default function Cv() {
                   </div>
                 </div>
                 <div className="text-[13px] text-slate-600 mt-0.5">{exp.org}</div>
-                <ul className="mt-2 pl-4 flex flex-col gap-1.5 text-[13.5px] leading-[1.5] text-slate-800 list-disc">
+                <ul className="mt-2 pl-4 flex flex-col gap-1.5 text-[14px] leading-[1.5] text-slate-800 list-disc">
                   {exp.bullets.map((b) => (
                     <li key={b.text}>
                       {b.text}
@@ -305,7 +305,7 @@ export default function Cv() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           <section aria-label="Formations et diplômes">
             <h2 className="section-label">Formations &amp; diplômes</h2>
-            <div className="flex flex-col gap-2 text-[13.5px] leading-[1.5] text-slate-800">
+            <div className="flex flex-col gap-2 text-[14px] leading-[1.5] text-slate-800">
               {diplomes.map(({ year, text }) => (
                 <div key={text}>
                   <span className="font-bold text-navy">{year}</span> {text}
@@ -315,7 +315,7 @@ export default function Cv() {
           </section>
           <section aria-label="Formations certifiantes">
             <h2 className="section-label">Formations certifiantes</h2>
-            <div className="flex flex-col gap-2 text-[13.5px] leading-[1.5] text-slate-800">
+            <div className="flex flex-col gap-2 text-[14px] leading-[1.5] text-slate-800">
               {certifiantes.map(({ year, text }) => (
                 <div key={text}>
                   <span className="font-bold text-navy">{year}</span> {text}
@@ -350,7 +350,7 @@ export default function Cv() {
 
         <section aria-label="Références">
           <h2 className="section-label">Références</h2>
-          <p className="text-[13.5px] leading-[1.6] text-slate-600">
+          <p className="text-[14px] leading-[1.6] text-slate-600">
             Références disponibles sur demande —{' '}
             <ObfuscatedLink reversed={EMAIL_REVERSED} kind="email" className="underline" />.
           </p>

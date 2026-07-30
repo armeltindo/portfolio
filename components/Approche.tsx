@@ -30,7 +30,7 @@ export default function Approche() {
               <h3 className="font-bold text-[17px] leading-[1.3] text-navy-900 mb-2.5">
                 {title}
               </h3>
-              <div className="text-[13.5px] leading-[1.6] text-slate-600">{text}</div>
+              <div className="text-[14px] leading-[1.6] text-slate-600">{text}</div>
             </div>
           </div>
         ))}

@@ -28,7 +28,7 @@ export default function ProjetPhare() {
               Direction Générale des Impôts · 2026
             </div>
           </div>
-          <div className="flex flex-col gap-4 text-[14.5px] leading-[1.6] text-slate-800">
+          <div className="flex flex-col gap-4 text-[14px] leading-[1.6] text-slate-800">
             {points.map(({ label, text }) => (
               <div key={label}>
                 <span className="font-bold text-navy">{label} — </span>

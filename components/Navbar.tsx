@@ -36,7 +36,7 @@ export default function Navbar() {
           <ObfuscatedLink
             reversed={EMAIL_REVERSED}
             kind="email"
-            className="hidden md:inline-block font-semibold text-[13px] text-white bg-navy px-[18px] py-[10px] rounded-md no-underline whitespace-nowrap"
+            className="hidden md:inline-block font-semibold text-[13px] text-white hover:text-white bg-navy hover:bg-accent transition-colors px-[18px] py-[10px] rounded-md no-underline whitespace-nowrap"
           >
             Me contacter
           </ObfuscatedLink>
@@ -71,7 +71,7 @@ export default function Navbar() {
             reversed={EMAIL_REVERSED}
             kind="email"
             onClick={() => setOpen(false)}
-            className="font-semibold text-[14px] text-white bg-navy px-[18px] py-[10px] rounded-md no-underline text-center"
+            className="font-semibold text-[14px] text-white hover:text-white bg-navy hover:bg-accent transition-colors px-[18px] py-[10px] rounded-md no-underline text-center"
           >
             Me contacter
           </ObfuscatedLink>

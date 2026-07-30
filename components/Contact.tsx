@@ -8,7 +8,7 @@ export default function Contact() {
         <h2 className="font-extrabold text-[30px] leading-[1.3] text-balance">
           Discutons de votre prochain projet data.
         </h2>
-        <p className="text-[14.5px] leading-[1.6] text-onnavy-sub2 mt-3">
+        <p className="text-[14px] leading-[1.6] text-onnavy-sub2 mt-3">
           Abomey-Calavi, Bénin ·{' '}
           <ObfuscatedLink
             reversed={PHONE1_REVERSED}
@@ -21,18 +21,18 @@ export default function Contact() {
           <ObfuscatedLink
             reversed={EMAIL_REVERSED}
             kind="email"
-            className="font-semibold text-[14px] text-navy bg-white px-6 py-[14px] rounded-md no-underline whitespace-nowrap"
+            className="font-semibold text-[14px] text-navy hover:text-navy bg-white hover:bg-slate-100 transition-colors px-6 py-[14px] rounded-md no-underline whitespace-nowrap"
           />
           <a
             href="https://www.linkedin.com/in/armel-tindo-839916190/"
-            className="font-semibold text-[14px] text-white bg-white/[0.14] px-6 py-[14px] rounded-md no-underline whitespace-nowrap"
+            className="font-semibold text-[14px] text-white hover:text-white bg-white/[0.14] hover:bg-white/[0.22] transition-colors px-6 py-[14px] rounded-md no-underline whitespace-nowrap"
           >
             LinkedIn
           </a>
           <ObfuscatedLink
             reversed={PHONE1_REVERSED}
             kind="whatsapp"
-            className="font-semibold text-[14px] text-white bg-white/[0.14] px-6 py-[14px] rounded-md no-underline whitespace-nowrap"
+            className="font-semibold text-[14px] text-white hover:text-white bg-white/[0.14] hover:bg-white/[0.22] transition-colors px-6 py-[14px] rounded-md no-underline whitespace-nowrap"
           >
             WhatsApp
           </ObfuscatedLink>

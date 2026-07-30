@@ -33,14 +33,14 @@ export default function Parcours() {
               i < roles.length - 1 ? 'border-b border-slate-200' : ''
             }`}
           >
-            <div className="flex-none w-full md:w-[140px] font-medium text-[12.5px] leading-[1.3] text-slate-400">
+            <div className="flex-none w-full md:w-[140px] font-medium text-[12px] leading-[1.3] text-slate-400">
               {period}
             </div>
             <div>
               <h3 className="font-bold text-[16px] leading-[1.3] text-navy-900">
                 {title}
               </h3>
-              <div className="text-[13.5px] leading-[1.5] text-slate-600 mt-1">
+              <div className="text-[14px] leading-[1.5] text-slate-600 mt-1">
                 {text}
               </div>
             </div>
@@ -48,7 +48,7 @@ export default function Parcours() {
         ))}
       </div>
       <div className="mt-6">
-        <a href="/cv" className="font-semibold text-[13.5px] underline">
+        <a href="/cv" className="font-semibold text-[14px] underline">
           Voir le CV complet et détaillé →
         </a>
       </div>

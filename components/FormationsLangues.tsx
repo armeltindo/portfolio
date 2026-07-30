@@ -25,7 +25,7 @@ export default function FormationsLangues() {
     <div className="max-w-[1100px] mx-auto px-8 pb-[72px] grid grid-cols-1 md:grid-cols-[1.2fr_0.8fr] gap-12">
       <section aria-label="Formations">
         <h2 className="section-label">Formations</h2>
-        <div className="flex flex-col gap-2 text-[13.5px] leading-[1.5] text-slate-800">
+        <div className="flex flex-col gap-2 text-[14px] leading-[1.5] text-slate-800">
           {formations.map(({ year, text }) => (
             <div key={text}>
               <span className="font-bold text-navy">{year}</span> {text}

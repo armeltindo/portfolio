@@ -22,13 +22,13 @@ export default function Hero() {
         <div className="flex flex-wrap gap-3 mt-8">
           <a
             href="#projet"
-            className="font-semibold text-[14px] text-white bg-navy px-6 py-[14px] rounded-md no-underline whitespace-nowrap"
+            className="font-semibold text-[14px] text-white hover:text-white bg-navy hover:bg-accent transition-colors px-6 py-[14px] rounded-md no-underline whitespace-nowrap"
           >
             Voir le projet Datafid
           </a>
           <a
             href="https://www.linkedin.com/in/armel-tindo-839916190/"
-            className="font-semibold text-[14px] text-navy bg-slate-100 px-6 py-[14px] rounded-md no-underline whitespace-nowrap"
+            className="font-semibold text-[14px] text-navy hover:text-navy bg-slate-100 hover:bg-[#e1e4ea] transition-colors px-6 py-[14px] rounded-md no-underline whitespace-nowrap"
           >
             LinkedIn
           </a>
